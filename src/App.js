@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Button } from "@chakra-ui/button";
+import { Input } from "@chakra-ui/input";
+import { Box, Flex, Text } from "@chakra-ui/layout";
+import AboutSection from "./components/AboutSection";
+import Header from "./components/Header";
+import MobileSection from "./components/MobileSection";
+import ParticlesSection from "./components/ParticlesSection";
+import WebSection from "./components/WebSection";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box overflowX="hidden">
+      <Header />
+      <ParticlesSection />
+
+      <AboutSection />
+      <WebSection />
+      <MobileSection />
+
+      <Box my={8} />
+    </Box>
   );
 }
 
