@@ -5,18 +5,35 @@ import AboutSection from "./components/AboutSection";
 import Header from "./components/Header";
 import MobileSection from "./components/MobileSection";
 import ParticlesSection from "./components/ParticlesSection";
+import ContactSection from "./components/ContactSection";
 import WebSection from "./components/WebSection";
+import { useRef } from "react";
 
 function App() {
+  const aboutRef = useRef(null);
+  const webRef = useRef(null);
+  const mobileRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const scrollToView = (scrollToRef) => {
+    console.log(scrollToRef);
+    scrollToRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <Box overflowX="hidden">
-      <Header />
+      <Header
+        aboutRef={aboutRef}
+        webRef={webRef}
+        mobileRef={mobileRef}
+        contactRef={contactRef}
+        scrollToView={scrollToView}
+      />
       <ParticlesSection />
-
-      <AboutSection />
-      <WebSection />
-      <MobileSection />
-
+      <AboutSection reference={aboutRef} />
+      <WebSection reference={webRef} />
+      <MobileSection reference={mobileRef} />
+      <ContactSection reference={contactRef} />
       <Box my={8} />
     </Box>
   );

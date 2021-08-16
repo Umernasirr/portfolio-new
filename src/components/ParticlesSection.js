@@ -2,10 +2,15 @@ import React from "react";
 import { Box, Flex, Text, Image, Button, Icon } from "@chakra-ui/react";
 import Particles from "react-particles-js";
 import { AiOutlineDown } from "react-icons/all";
+import { motion } from "framer-motion";
+
 const ParticlesSection = () => {
+  const MotionBox = motion(Box);
+
   return (
-    <Box bg="gray.900">
+    <Box bg="gray.900" h="100vh">
       <Particles
+        height="100vh"
         params={{
           particles: {
             number: {
@@ -70,40 +75,54 @@ const ParticlesSection = () => {
         mt={12}
       >
         <Text
-          fontSize="8xl"
+          fontSize={{ base: "4xl", md: "8xl" }}
           color="white"
           textAlign="center"
           fontFamily="Josefin Sans"
-          fontWeight="100"
+          fontWeight="light"
           lineHeight="1"
         >
           Umer Nasir
         </Text>
 
-        <Text fontSize="2xl" color="white" textAlign="center">
+        <Text
+          fontSize={{ base: "xl", md: "2xl" }}
+          color="white"
+          textAlign="center"
+          fontWeight="light"
+        >
           A Full Stack Developer
         </Text>
 
-        <Box my={4}>
+        <MotionBox
+          onClick={() => console.log("HEY")}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          my={4}
+        >
           <Image src="/images/computer.png" w="160px" h="160px" />
-        </Box>
-        <Flex width="32%" mt={4}>
+        </MotionBox>
+        <Flex width={{ base: "60%", lg: "32%" }} mt={4}>
           <Text fontSize="xl" textAlign="left" color="brand.100">
-            Welcome To my portfolio!
+            Welcome To My Portfolio!
           </Text>
         </Flex>
 
-        <Flex width="32%" my={4}>
-          <Text fontSize="lg" textAlign="left" color="brand.400">
+        <Flex width={{ base: "60%", lg: "32%" }} mt={4}>
+          <Text fontSize="lg" textAlign="justify" color="brand.400">
             I’m a Web developer and a Mobile developer with 3+ years of
             Experience in Development and a Degree in Computer Science!!
           </Text>
         </Flex>
 
         <Button
+          mt={8}
           variant="outline"
           color="brand.100"
-          _hover={{ color: "secondary.200", borderColor: "secondary.200" }}
+          _hover={{
+            color: "secondary.200",
+            borderColor: "secondary.200",
+          }}
           _active={{}}
           rightIcon={<Icon as={AiOutlineDown} />}
         >

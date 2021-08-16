@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 
-const Header = () => {
+const Header = ({ aboutRef, webRef, mobileRef, contactRef, scrollToView }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const HeaderButton = ({ title, idx }) => (
+  const HeaderButton = ({ title, idx, onClick }) => (
     <Button
       color={selectedIndex === idx ? "secondary.200" : "white"}
-      onClick={() => setSelectedIndex(idx)}
-      bg=""
-      mx={3}
+      bg="transparent"
+      mx={{ base: 0, md: 3 }}
       fontWeight="medium"
       borderRadius={0}
       borderBottomColor={
@@ -21,6 +20,10 @@ const Header = () => {
         borderBottomColor: "secondary.200",
       }}
       _active={{ color: "secondary.400", borderBottomColor: "secondary.400" }}
+      onClick={() => {
+        onClick();
+        setSelectedIndex(selectedIndex);
+      }}
     >
       {title}
     </Button>
@@ -35,11 +38,24 @@ const Header = () => {
       justify="center"
       align="center"
     >
-      <HeaderButton idx={0} title="Home" />
-      <HeaderButton idx={1} title="About" />
-      <HeaderButton idx={2} title="Web" />
-      <HeaderButton idx={3} title="Mobile" />
-      <HeaderButton idx={4} title="Resume" />
+      <HeaderButton idx={0} title="Home" onClick={() => console.log("hi")} />
+      <HeaderButton
+        idx={1}
+        title="About"
+        onClick={() => scrollToView(aboutRef)}
+      />
+      <HeaderButton idx={2} title="Web" onClick={() => scrollToView(webRef)} />
+      <HeaderButton
+        idx={3}
+        title="Mobile"
+        onClick={() => scrollToView(mobileRef)}
+      />
+      <HeaderButton
+        idx={4}
+        title="Contact"
+        onClick={() => scrollToView(contactRef)}
+      />
+      <HeaderButton idx={5} title="My Work" onClick={() => scrollToView()} />
     </Flex>
   );
 };
